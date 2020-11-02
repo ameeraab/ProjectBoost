@@ -56,7 +56,6 @@ public class Rocket : MonoBehaviour
                 print("Dead");
                 state = State.Dying;
                 Invoke(nameof(LoadSameScene), delay);
-                LoadSameScene();
                 break;
         }
     }
