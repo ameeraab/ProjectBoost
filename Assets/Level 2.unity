@@ -227,6 +227,66 @@ Light:
     type: 3}
   m_PrefabInstance: {fileID: 3518000887673118250}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &868112136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5799445639555456828, guid: bad86051a3201d9478166f0e81db7699,
+    type: 3}
+  m_PrefabInstance: {fileID: 1841830470139750213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &868112137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868112136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda13e5e65f7093419b96949a145154a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: -10, y: 5, z: 0}
+  period: 2
+--- !u!1 &901878988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2638944265262011971, guid: abc7f399434fbe14c8fb8a812fff8f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 7884628442082992932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &901878993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901878988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda13e5e65f7093419b96949a145154a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 20, y: 0, z: 0}
+  period: 3
+--- !u!1 &1852534011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2638944264438039642, guid: abc7f399434fbe14c8fb8a812fff8f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 7884628442082992932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1852534013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852534011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda13e5e65f7093419b96949a145154a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: -10, z: 0}
+  period: 6
 --- !u!1001 &522400473610371705
 PrefabInstance:
   m_ObjectHideFlags: 0

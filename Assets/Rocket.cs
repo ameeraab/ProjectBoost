@@ -111,11 +111,9 @@ public class Rocket : MonoBehaviour
 
     private void RespondToThrustInput()
     {
-        float thrustThisFrame = mainThrust * Time.deltaTime;
-
         if (Input.GetKey(KeyCode.Space))
         {
-            ApplyThrust(thrustThisFrame);
+            ApplyThrust();
         }
         else
         {
@@ -124,9 +122,9 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void ApplyThrust(float thrustThisFrame)
+    private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         if (!audioSource.isPlaying)
             audioSource.PlayOneShot(mainEngine);
 
