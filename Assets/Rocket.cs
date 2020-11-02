@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
-    Rigidbody rigidBody;
-    AudioSource thrustNoise;
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 1000f;
+
+    Rigidbody rigidBody;
+    AudioSource thrustNoise;
+    static int scene = 0;
+
+    enum State { Alive, Dying, Transcending};
+    State state = State.Alive;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,22 +24,57 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        if(state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
+        else if(state == State.Dying)
+        {
+            thrustNoise.Stop();
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        //print("Collided");
+        if (state != State.Alive)
+            return;
+
+        float delay = 3.0f;
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                print("OK");
+                print("Hit friendly");
+                break;
+            case "Finish":
+                print("Hit finish");
+                state = State.Transcending;
+                Invoke(nameof(LoadNextScene), delay);
                 break;
             default:
-                print("dead");
+                print("Dead");
+                state = State.Dying;
+                Invoke(nameof(LoadSameScene), delay);
+                LoadSameScene();
                 break;
         }
+    }
+
+    private void LoadSameScene()
+    {
+        state = State.Alive;
+        SceneManager.LoadScene(scene);
+    }
+
+    private void LoadNextScene()
+    {
+        state = State.Alive;
+
+        if (scene < SceneManager.sceneCountInBuildSettings - 1)
+            scene++;
+        
+        SceneManager.LoadScene(scene);
     }
 
     private void Thrust()
