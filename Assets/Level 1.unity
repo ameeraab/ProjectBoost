@@ -272,6 +272,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1234338987, guid: 5c06e9cd3ca9bfb40a22529509378c7a, type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234338989, guid: 5c06e9cd3ca9bfb40a22529509378c7a, type: 3}
+      propertyPath: mainEngine
+      value: 
+      objectReference: {fileID: 8300000, guid: 5edc6470f2342284bb3031ac4f9ac12e, type: 3}
     - target: {fileID: 2569863921739159676, guid: 5c06e9cd3ca9bfb40a22529509378c7a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -331,6 +339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rocket Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159981859217923435, guid: 5c06e9cd3ca9bfb40a22529509378c7a,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c06e9cd3ca9bfb40a22529509378c7a, type: 3}

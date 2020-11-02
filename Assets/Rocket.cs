@@ -5,9 +5,12 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 1000f;
+    [SerializeField] AudioClip mainEngine;
+    [SerializeField] AudioClip winSound;
+    [SerializeField] AudioClip deathSound;
 
     Rigidbody rigidBody;
-    AudioSource thrustNoise;
+    AudioSource audioSource;
     static int scene = 0;
 
     enum State { Alive, Dying, Transcending};
@@ -17,8 +20,9 @@ public class Rocket : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //audioSource.Stop();
         rigidBody = GetComponent<Rigidbody>();
-        thrustNoise = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,12 +30,12 @@ public class Rocket : MonoBehaviour
     {
         if(state == State.Alive)
         {
-            Thrust();
-            Rotate();
+            RespondToThrustInput();
+            RespondToRotateInput();
         }
         else if(state == State.Dying)
         {
-            thrustNoise.Stop();
+            
         }
     }
 
@@ -45,54 +49,74 @@ public class Rocket : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                print("Hit friendly");
                 break;
             case "Finish":
-                print("Hit finish");
-                state = State.Transcending;
-                Invoke(nameof(LoadNextScene), delay);
+                StartWinSequence(delay);
                 break;
             default:
-                print("Dead");
-                state = State.Dying;
-                Invoke(nameof(LoadSameScene), delay);
+                StartDeathSequence(delay);
                 break;
         }
     }
 
-    private void LoadSameScene()
+    private void StartWinSequence(float delay)
     {
-        state = State.Alive;
-        SceneManager.LoadScene(scene);
+        state = State.Transcending;
+        audioSource.Stop();
+        audioSource.PlayOneShot(winSound);
+        Invoke(nameof(LoadNextScene), delay);
+    }
+
+    private void StartDeathSequence(float delay)
+    {
+        state = State.Dying;
+        audioSource.Stop();
+        audioSource.PlayOneShot(deathSound);
+        Invoke(nameof(LoadSameScene), delay);
     }
 
     private void LoadNextScene()
     {
         state = State.Alive;
 
+        audioSource.Stop();
+
         if (scene < SceneManager.sceneCountInBuildSettings - 1)
             scene++;
-        
         SceneManager.LoadScene(scene);
     }
 
-    private void Thrust()
+    private void LoadSameScene()
+    {
+        state = State.Alive;
+
+        audioSource.Stop();
+
+        SceneManager.LoadScene(scene);
+    }
+
+    private void RespondToThrustInput()
     {
         float thrustThisFrame = mainThrust * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
-            if (!thrustNoise.isPlaying)
-                thrustNoise.Play();
+            ApplyThrust(thrustThisFrame);
         }
         else
         {
-            thrustNoise.Stop();
+            audioSource.Stop();
         }
     }
 
-    private void Rotate()
+    private void ApplyThrust(float thrustThisFrame)
+    {
+        rigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(mainEngine);
+    }
+
+    private void RespondToRotateInput()
     {
         rigidBody.freezeRotation = true;
 
