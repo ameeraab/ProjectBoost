@@ -5,6 +5,7 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 1000f;
+    [SerializeField] float levelLoadDelay;
 
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip winSound;
@@ -48,22 +49,20 @@ public class Rocket : MonoBehaviour
         if (state != State.Alive)
             return;
 
-        float delay = 3.0f;
-
         switch (collision.gameObject.tag)
         {
             case "Friendly":
                 break;
             case "Finish":
-                StartWinSequence(delay);
+                StartWinSequence();
                 break;
             default:
-                StartDeathSequence(delay);
+                StartDeathSequence();
                 break;
         }
     }
 
-    private void StartWinSequence(float delay)
+    private void StartWinSequence()
     {
         state = State.Transcending;
 
@@ -73,10 +72,10 @@ public class Rocket : MonoBehaviour
         mainEngineParticles.Stop();
         SuccessParticles.Play();
 
-        Invoke(nameof(LoadNextScene), delay);
+        Invoke(nameof(LoadNextScene), levelLoadDelay);
     }
 
-    private void StartDeathSequence(float delay)
+    private void StartDeathSequence()
     {
         state = State.Dying;
 
@@ -86,7 +85,7 @@ public class Rocket : MonoBehaviour
         mainEngineParticles.Stop();
         deathParticles.Play();
 
-        Invoke(nameof(LoadSameScene), delay);
+        Invoke(nameof(LoadSameScene), levelLoadDelay);
     }
 
     private void LoadNextScene()
