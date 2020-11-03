@@ -17,7 +17,6 @@ public class Rocket : MonoBehaviour
 
     Rigidbody rigidBody;
     AudioSource audioSource;
-    static int scene = 0;
 
     enum State { Alive, Dying, Transcending};
     State state = State.Alive;
@@ -35,8 +34,10 @@ public class Rocket : MonoBehaviour
     void Update()
     {
         if(Debug.isDebugBuild)
+        {
             RespondToDebugKeys();
-
+        }
+            
         if (state == State.Alive)
         {
             RespondToThrustInput();
@@ -102,22 +103,21 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextScene()
     {
-        state = State.Alive;
-
         audioSource.Stop();
 
-        if (scene < SceneManager.sceneCountInBuildSettings - 1)
-            scene++;
-        SceneManager.LoadScene(scene);
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+            nextSceneIndex = 0;
+
+       SceneManager.LoadScene(nextSceneIndex);
     }
 
     private void LoadSameScene()
     {
-        state = State.Alive;
-
         audioSource.Stop();
 
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void RespondToThrustInput()
