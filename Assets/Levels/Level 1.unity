@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.61
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.26
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.26}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -394,6 +394,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c06e9cd3ca9bfb40a22529509378c7a, type: 3}
+--- !u!1001 &987753460234698386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 987753460398647289, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_Name
+      value: Landing Pad Lighting
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 987753460398647295, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcebeb11b6149d94e9f45e6ae9d3dbc3, type: 3}
 --- !u!1001 &1753322418101853323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,11 +593,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -38.343002
-      objectReference: {fileID: 0}
-    - target: {fileID: 3518000888110050481, guid: ec6e72aefac414b47a91fb82f8d3a249,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.97411
       objectReference: {fileID: 0}
     - target: {fileID: 3518000888110050483, guid: ec6e72aefac414b47a91fb82f8d3a249,
         type: 3}
